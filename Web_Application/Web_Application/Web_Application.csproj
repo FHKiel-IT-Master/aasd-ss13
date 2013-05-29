@@ -111,6 +111,7 @@
     <Content Include="admin.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Handler.cs" />
     <Compile Include="Search.cs" />
     <Compile Include="contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>

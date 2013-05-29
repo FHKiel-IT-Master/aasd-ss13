@@ -7,27 +7,36 @@ namespace Web_Application
 {
     public class Search
     {
-        private string a;
+        private string context;
+        private string input;
+        private RequestHandler.Result[] aResults;
 
         //TODO: structure to store the results, should be replaced by the result class later
 
-        public Search(string t)
+        public Search(string a, string b)
         {
-            a = t;
+            context = b;
+            input = a;
+        }
+
+        public string StringBuilder()
+        {
+            //Here the search string is properly built
+            return "test";
+        }
+
+        public void WebSearchProcess()
+        {
+            BingSearchConnector.BingSearch.startBingSearch(input, out aResults);
         }
 
         public string GetResults()
         {
-
-
-            RequestHandler.Result[] aResults;
-
-            BingSearchConnector.BingSearch.startBingSearch(a, out aResults);
-
             if (aResults[0] != null)  //if the first cell of the array is null, there were no results from Bing!
-                return "String = " + a + "<br />" + aResults[0].mTitle + "<br />" + aResults[0].mDescription;
+                return "String = " + input + "<br />" + aResults[0].mTitle + "<br />" + aResults[0].mDescription;
             else
-                return "String = " + a + "<br />" + "Sorry, no results!";
+                return "String = " + input + "<br />" + "Sorry, no results!";
         }
+
     }
 }

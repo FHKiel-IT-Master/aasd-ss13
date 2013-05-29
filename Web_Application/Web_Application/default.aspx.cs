@@ -9,19 +9,20 @@ namespace Web_Application
 {
     public partial class _default : System.Web.UI.Page
     {
+        private Handler hld;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //Here the connector to the database comes into play.
-                //It will output an array of strings containing the "structure"
-                //Here is just an example
+                //Create a new Handler session.
+                Session["Handler"] = new Handler();
 
-                string[] ctxs = new String[10];
-                ctxs[0] = "News"; ctxs[1] = "Sports"; ctxs[2] = "Music"; ctxs[3] = "Person"; ctxs[4] = "Country"; ctxs[5] = "Technology";
-                ctxs[6] = "University"; ctxs[7] = "Clubs"; ctxs[8] = "Party"; ctxs[9] = "Magazines";
+                hld = Session["Handler"] as Handler;
 
-                LoadContext(ctxs);
+                //Asks the handler for the structure and load the contexts
+                LoadContext(hld.LoadStructure());
+
             }
 
         }
@@ -32,18 +33,18 @@ namespace Web_Application
             for (int i = 0; i < ctx.Length; i++)
             {
                 contexts.InnerHtml += "<input id='tl_" + ctx[i] + "' type='button' value='" + ctx[i] + "' class='btn_tile' onclick='context_clicked(this.value)'/>";
+                subcontexts.InnerHtml += "<input id='sub_" + ctx[i] + "' name='tl_" + ctx[i] + "_sub' type='button' value='SUB' class='btn_tile sub' onclick='subcontext_clicked(this.value)' style='display:none;'/>";
+                subcontexts.InnerHtml += "<input id='sub_" + ctx[i] + "' name='tl_test_sub' type='button' value='SUB' class='btn_tile sub' onclick='subcontext_clicked(this.id,this.value)' style='display:none;'/>";
             }
         }
 
         protected void Btn_Search_Click(object sender, EventArgs e)
         {
-            //Create a new Search session.
-            Search srch = (Search)Session["SearchObj"];
-            Session["SearchObj"] = new Search(TxtB_Input.Text);
+
+            hld = Session["Handler"] as Handler;
+            hld.RequestSearch(TxtB_Input.Text, Hidden1.Value);
 
             string topic = TxtB_Input.Text == "" ? "Error" : TxtB_Input.Text;
-            
-            //Call the search class / refinement.
 
             //Redirect to the result page.
             Response.Redirect("s_results.aspx?topic="+topic+Hidden1.Value+"#!/page_results", true);
