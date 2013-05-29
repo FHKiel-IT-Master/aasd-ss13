@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
+
 namespace Web_Application
 {
     public class Handler
     {
-        private Search srch;
+        private SearchSystem.Search srch;
 
         public void RequestSearch(string input, string context)
         {
             //First create a new search instance
-            srch = new Search(input,context);
+            srch = new SearchSystem.Search(input, context);
 
             //Secondly start the search process
             srch.WebSearchProcess();

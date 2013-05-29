@@ -7,7 +7,7 @@
     <ProjectGuid>{31DB2E3E-1F29-4D11-BC7E-F556E79799D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RequestHandler</RootNamespace>
+    <RootNamespace>SearchSystem</RootNamespace>
     <AssemblyName>RequestHandler</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Result.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="Operands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

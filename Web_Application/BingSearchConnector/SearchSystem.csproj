@@ -7,8 +7,8 @@
     <ProjectGuid>{B8A4AE5E-ED54-493A-B2C0-6D0F94AB2371}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BingSearchConnector</RootNamespace>
-    <AssemblyName>BingSearchConnector</AssemblyName>
+    <RootNamespace>SearchSystem</RootNamespace>
+    <AssemblyName>SearchSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,6 +43,8 @@
     <Compile Include="BingSearchContainer.cs" />
     <Compile Include="BingSearch.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result.cs" />
+    <Compile Include="Search.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\RequestHandler\RequestHandler.csproj">

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Web_Application
+namespace SearchSystem
 {
     public class Search
     {
         private string context;
         private string input;
-        private RequestHandler.Result[] aResults;
+        private SearchSystem.Result[] aResults;
 
         //TODO: structure to store the results, should be replaced by the result class later
 
@@ -27,7 +27,7 @@ namespace Web_Application
 
         public void WebSearchProcess()
         {
-            BingSearchConnector.BingSearch.startBingSearch(input, out aResults);
+            SearchSystem.BingSearch.startBingSearch(input, out aResults);
         }
 
         public string GetResults()

@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net;
 
-namespace BingSearchConnector
+namespace SearchSystem
 {
     public class BingSearch
     {
-        public static void startBingSearch(string aQueryString, out RequestHandler.Result[] aResults)
+        public static void startBingSearch(string aQueryString, out SearchSystem.Result[] aResults)
         {
             var aBingContainer = new Bing.BingSearchContainer(new Uri(rootUri));    //create container which handles the connection to Bing
             aBingContainer.Credentials = new NetworkCredential(accountKey, accountKey);
@@ -24,7 +24,7 @@ namespace BingSearchConnector
             //{
             //    aNumberOfResults++;
             //}
-            aResults = new RequestHandler.Result[1];
+            aResults = new SearchSystem.Result[1];
             // now store all the values in the array
             int count = 0;
             foreach (var aResult in aQueryResults)
@@ -32,7 +32,7 @@ namespace BingSearchConnector
                 if (count != 0)
                     Array.Resize(ref aResults, aResults.Length + 1);
                 
-                aResults[count] = new RequestHandler.Result();
+                aResults[count] = new SearchSystem.Result();
                 aResults[count].mGuid = aResult.ID;
                 aResults[count].mTitle = aResult.Title;
                 aResults[count].mDescription = aResult.Description;
