@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WebbApp.master.cs" Inherits="Web_Application.WebbApp" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="js/jquery-1.7.min.js"></script> 
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <!--[if lt IE 9]>
+  	<script type="text/javascript" src="js/html5.js"></script>
+    <link rel="stylesheet" href="css/ie.css" type="text/css" media="all">
+    <![endif]-->
+	<!--[if lt IE 8]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode"><img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." /></a>
+		</div>
+	<![endif]-->
+</head>
+<body>
+<div id="glob">
+        <%--<div class="spinner"></div>--%>
+          <section id="content">
+           <!-- HEADER -->
+            <header>
+                <div class="container_16">
+                    <div class="grid_16">
+                        <h1><a href="default.aspx#!/page_home" class="logo">search engine</a></h1>
+                        <h2>Fachhochschule Kiel</h2>
+                        <h3>version 0.1</h3>
+                    </div>
+                </div>                
+            </header>
+            <!-- MENU -->
+            <div class="container_16">
+                <div class="grid_4">
+                    <div id="menu_block">
+                        <nav class="menu">
+                            <ul id="menu">
+                                <li><a href="#!/page_home"></a></li>
+                                <li><a href="default.aspx#!/page_home">Home</a><span><strong></strong></span></li>
+                                <li class="with_ul"><a href="#!/page_about">About</a><span><strong></strong></span></li>
+                                <li><a href="#!/page_people">Members</a><span><strong></strong></span></li>
+                                <li><a href="#!/page_mail">Contacts</a><span><strong></strong></span></li>
+                        	</ul>
+                   	    </nav>
+                        <a href="#" id="menu_header">main menu<span><strong></strong></span></a>                        
+                    </div>
+                </div>
+            </div>
+            <!-- END MENU -->
+            <!-- END HEADER -->
+     <!--Here is a Holder for the content of other pages-->
+            <asp:ContentPlaceHolder ID="main" runat="server">
+            </asp:ContentPlaceHolder>
+            <div id="bg_holder"></div>
+            <!-- FOOTER -->
+            <footer>
+                <div class="container_16">
+                    <div class="grid_16">
+                        <p class="priv_text">students &copy; 2012 &bull; <a href="#!/page_privacy">Privacy Policy</a> <br />Designed by <a href="http://www.templatemonster.com/">TemplateMonster</a></p>
+                        <ul class="soc_icons">
+                            <li><a href="#"><img src="images/soc_icon1.png" alt ="icon_1"/></a></li>
+                            <%--<li><a href="#"><img src="images/soc_icon2.png" alt ="icon_2"/></a></li>--%>
+                            <li><a href="#"><img src="images/soc_icon3.png" alt ="icon_3"/></a></li>
+                        </ul>
+                        <!-- {%FOOTER_LINK} --> 
+                    </div>  
+                </div>          
+            </footer>
+        <!-- END FOOTER -->
+        </section>
+    </div>
+</body>
+</html>
