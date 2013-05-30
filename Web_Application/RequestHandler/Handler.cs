@@ -4,8 +4,7 @@ using System.Linq;
 using System.Web;
 
 
-
-namespace Web_Application
+namespace RequestHandler
 {
     public class Handler
     {

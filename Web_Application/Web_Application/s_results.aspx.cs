@@ -17,7 +17,7 @@ namespace Web_Application
             }
             else
             {
-                Handler hld = Session["Handler"] as Handler;
+                RequestHandler.Handler hld = Session["Handler"] as RequestHandler.Handler;
 
                 SearchTopic.Text = "<h3> You searched for:" + Request["topic"] + "</h3>";
                 ResultsLiteral.Text = "<p>" + hld.RequestResults() + "</p>";

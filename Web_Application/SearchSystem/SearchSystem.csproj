@@ -42,14 +42,16 @@
   <ItemGroup>
     <Compile Include="BingSearchContainer.cs" />
     <Compile Include="BingSearch.cs" />
+    <Compile Include="Context.cs" />
+    <Compile Include="Operands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Search.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RequestHandler\RequestHandler.csproj">
-      <Project>{31db2e3e-1f29-4d11-bc7e-f556e79799d8}</Project>
-      <Name>RequestHandler</Name>
+    <ProjectReference Include="..\DataAccess\DataAccess.sqlproj">
+      <Project>{aeaccfb4-912b-48ad-b5f4-069dc9e8a304}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

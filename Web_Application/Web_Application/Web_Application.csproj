@@ -111,7 +111,6 @@
     <Content Include="admin.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Handler.cs" />
     <Compile Include="contact.aspx.cs">
       <DependentUpon>contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -166,10 +165,6 @@
     <Content Include="WebbApp.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BingSearchConnector\SearchSystem.csproj">
-      <Project>{b8a4ae5e-ed54-493a-b2c0-6d0f94ab2371}</Project>
-      <Name>SearchSystem</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RequestHandler\RequestHandler.csproj">
       <Project>{31db2e3e-1f29-4d11-bc7e-f556e79799d8}</Project>
       <Name>RequestHandler</Name>

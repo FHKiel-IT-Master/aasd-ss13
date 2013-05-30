@@ -9,16 +9,16 @@ namespace Web_Application
 {
     public partial class _default : System.Web.UI.Page
     {
-        private Handler hld;
+        private RequestHandler.Handler hld;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 //Create a new Handler session.
-                Session["Handler"] = new Handler();
+                Session["Handler"] = new RequestHandler.Handler();
 
-                hld = Session["Handler"] as Handler;
+                hld = Session["Handler"] as RequestHandler.Handler;
 
                 //Asks the handler for the structure and load the contexts
                 LoadContext(hld.LoadStructure());
@@ -41,7 +41,7 @@ namespace Web_Application
         protected void Btn_Search_Click(object sender, EventArgs e)
         {
 
-            hld = Session["Handler"] as Handler;
+            hld = Session["Handler"] as RequestHandler.Handler;
             hld.RequestSearch(TxtB_Input.Text, Hidden1.Value);
 
             string topic = TxtB_Input.Text == "" ? "Error" : TxtB_Input.Text;
