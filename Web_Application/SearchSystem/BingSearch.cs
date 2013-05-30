@@ -18,12 +18,6 @@ namespace SearchSystem
             var aQuery = aBingContainer.Web(aQueryString, null, null, null, null, null, null, null);    //Query without any options, perhaps make them modifiable if useful
             var aQueryResults = aQuery.Execute();    //synchronous call to Bing
 
-            //first get the number of results, than create the array, so there is no resizing necessary
-            //int aNumberOfResults = 0;
-            //foreach (var i in aQueryResults)
-            //{
-            //    aNumberOfResults++;
-            //}
             aResults = new SearchSystem.Result[1];
             // now store all the values in the array
             int count = 0;
