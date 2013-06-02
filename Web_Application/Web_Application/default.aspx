@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="Web_Application._default" MasterPageFile ="~/WebbApp.Master" %>
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="main" runat="server">
 <style type="text/css">
      .inputTxt {
@@ -66,7 +65,7 @@
         <li id="page_home">
             <form id="form1" runat="server" style="background:none">
                 <div class="container_16">
-                    <input id="Hidden1" type="hidden" runat="server" />
+                    <input id="hidContexts" type="hidden" runat="server" />
                         <div class="grid_6">
                             <div class="slogan">
                                 <p>Find<br/>what you<br/>need</p>
@@ -131,9 +130,9 @@
     }
 
     function context_clicked(click_id) {
-        var hidden = document.getElementById("<%:Hidden1.ClientID%>").value;
+        var hidden = document.getElementById("<%:hidContexts.ClientID%>").value;
         if (hidden.search(click_id) == -1) {
-            document.getElementById("<%:Hidden1.ClientID%>").value += "%" + click_id;
+            document.getElementById("<%:hidContexts.ClientID%>").value += "%" + click_id;
         } else {
             //if the context is deselected, all sub-contexts should also be removed
             var sub = document.getElementsByName("sub_" + click_id);
@@ -141,20 +140,20 @@
                 hidden = hidden.replace("$" + sub[i].value, "");
             }
             hidden = hidden.replace("%" + click_id, "");
-            document.getElementById("<%:Hidden1.ClientID%>").value = hidden;
+            document.getElementById("<%:hidContexts.ClientID%>").value = hidden;
         }
     }
 
     function subcontext_clicked(click_id,click_value) {
-        var hidden = document.getElementById("<%:Hidden1.ClientID%>").value;
+        var hidden = document.getElementById("<%:hidContexts.ClientID%>").value;
         if (hidden.search(click_value) == -1) {
             //look for the name of the supercontext, so it can add the subcontext besides it
             var position = hidden.search(click_id.substr(4));
             hidden = [hidden.slice(0, (position + click_id.substr(4).length)), "$" + click_value, hidden.slice((position + click_id.substr(4).length))].join('');
-            document.getElementById("<%:Hidden1.ClientID%>").value = hidden;
+            document.getElementById("<%:hidContexts.ClientID%>").value = hidden;
         } else {
             hidden = hidden.replace("$" + click_value, "");
-            document.getElementById("<%:Hidden1.ClientID%>").value = hidden;
+            document.getElementById("<%:hidContexts.ClientID%>").value = hidden;
         }
     }
 

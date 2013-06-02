@@ -9,14 +9,16 @@ namespace SearchSystem
     {
         private string context;
         private string input;
-        private SearchSystem.Result[] aResults;
+        private List<SearchSystem.Result> aResults;
 
         //TODO: structure to store the results, should be replaced by the result class later
 
         public Search(string a, string b)
         {
-            context = b;
             input = a;
+            context = b;
+
+            //Likely here the contexts should also be created
         }
 
         public string StringBuilder()
@@ -32,10 +34,20 @@ namespace SearchSystem
 
         public string GetResults()
         {
+            string result="";
+
             if (aResults[0] != null)  //if the first cell of the array is null, there were no results from Bing!
-                return "String = " + input + "<br />" + aResults[0].mTitle + "<br />" + aResults[0].mDescription;
+            {
+                foreach (SearchSystem.Result r in aResults)
+                {
+                    result += "<p><a href='" + r.mUrl + "' target='_blank'>" + r.mTitle + "</a><p>" + r.mDescription + "<br /><br />";
+                }
+            }
             else
-                return "String = " + input + "<br />" + "Sorry, no results!";
+                result = "<h2>No results<h2>";
+
+            return result;
+
         }
 
     }

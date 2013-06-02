@@ -9,7 +9,7 @@ namespace SearchSystem
 {
     public class BingSearch
     {
-        public static void startBingSearch(string aQueryString, out SearchSystem.Result[] aResults)
+        public static void startBingSearch(string aQueryString, out List<SearchSystem.Result> aResults)
         {
             var aBingContainer = new Bing.BingSearchContainer(new Uri(rootUri));    //create container which handles the connection to Bing
             aBingContainer.Credentials = new NetworkCredential(accountKey, accountKey);
@@ -18,20 +18,19 @@ namespace SearchSystem
             var aQuery = aBingContainer.Web(aQueryString, null, null, null, null, null, null, null);    //Query without any options, perhaps make them modifiable if useful
             var aQueryResults = aQuery.Execute();    //synchronous call to Bing
 
-            aResults = new SearchSystem.Result[1];
+            aResults = new List<SearchSystem.Result>();
             // now store all the values in the array
-            int count = 0;
+
             foreach (var aResult in aQueryResults)
             {
-                if (count != 0)
-                    Array.Resize(ref aResults, aResults.Length + 1);
-                
-                aResults[count] = new SearchSystem.Result();
-                aResults[count].mGuid = aResult.ID;
-                aResults[count].mTitle = aResult.Title;
-                aResults[count].mDescription = aResult.Description;
-                aResults[count].mUrl = aResult.Url;
-                aResults[count].mDisplayUrl = aResult.DisplayUrl;
+                aResults.Add(new SearchSystem.Result()
+                {
+                    mGuid = aResult.ID,
+                    mTitle = aResult.Title,
+                    mDescription = aResult.Description,
+                    mUrl = aResult.Url,
+                    mDisplayUrl = aResult.DisplayUrl
+                });
             }
 
         

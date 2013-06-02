@@ -42,12 +42,12 @@ namespace Web_Application
         {
 
             hld = Session["Handler"] as RequestHandler.Handler;
-            hld.RequestSearch(TxtB_Input.Text, Hidden1.Value);
+            hld.RequestSearch(TxtB_Input.Text, hidContexts.Value);
 
             string topic = TxtB_Input.Text == "" ? "Error" : TxtB_Input.Text;
 
             //Redirect to the result page.
-            Response.Redirect("s_results.aspx?topic="+topic+Hidden1.Value+"#!/page_results", true);
+            Response.Redirect("s_results.aspx?topic=" + topic + hidContexts.Value + "#!/page_results", true);
         }
 
         
