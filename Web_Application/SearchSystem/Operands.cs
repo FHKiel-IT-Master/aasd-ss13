@@ -8,5 +8,14 @@ namespace SearchSystem
 {
     class Operands
     {
+        String description;
+        String content;
+
+        public Operands()
+        {
+
+        }
+
+
     }
 }

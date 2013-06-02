@@ -8,15 +8,15 @@ namespace SearchSystem
 {
     public class Result
     {
-            public Result()
-            {
+        public Result()
+        {
 
-            }
+        }
 
-            public Guid mGuid;
-            public string mTitle;
-            public string mDescription;
-            public string mDisplayUrl;
-            public string mUrl;
+        public Guid mGuid;
+        public string mTitle;
+        public string mDescription;
+        public string mDisplayUrl;
+        public string mUrl;
     }
 }
