@@ -8,15 +8,30 @@ namespace SearchSystem
 {
     public class Result
     {
+    
+        Guid id;
+        int relevance;
+        public String title;
+        public  String description;
+        String displayURL;
+        public String url;
+
         public Result()
         {
 
         }
 
-        public Guid mGuid;
-        public string mTitle;
-        public string mDescription;
-        public string mDisplayUrl;
-        public string mUrl;
+
+        public void AddRelevance()
+        {
+
+            relevance++;
+        }
+
+        public int GetRelevance()
+        {
+            return relevance;
+        }
+
     }
 }

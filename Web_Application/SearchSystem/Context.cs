@@ -11,7 +11,7 @@ namespace SearchSystem
 
         String description;
         String name;
-        List<String> tags = new List<String>();
+        public  List<String> tags = new List<String>();
         List<Operands> operands = new List<Operands>();
 
         public Context()
