@@ -2,34 +2,48 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text.RegularExpressions;
+using System.Data.SqlClient;
 
 namespace SearchSystem
 {
     public class Search
     {
-        private string context;
+        private string sContext;
         private string input;
-        private List<SearchSystem.Result> aResults;
-
-        //TODO: structure to store the results, should be replaced by the result class later
+        public List<Result> aResults { get; protected set; }
+        public List<Context> contexts { get; private set;}
 
         public Search(string a, string b)
         {
             input = a;
-            context = b;
+            sContext = b;
 
-            //Likely here the contexts should also be created
+            aResults = new List<SearchSystem.Result>();
+            contexts = new List<Context>();
+
+            //Contexts should also be created for further use in the string builder and refinement.
+            Regex rg = new Regex("%(.*?)%");
+            Match tmp = rg.Match(sContext);
+            while (tmp.Success)
+            {
+                //Here connects to database to get the other necessary values to the context class
+                //If we are to use sub-contexts this part would need a re-coding.
+                contexts.Add(new Context() { name = tmp.Groups[1].ToString()});
+                tmp = tmp.NextMatch();
+            }
+
         }
 
         public string StringBuilder()
         {
             //Here the search string is properly built
-            return "test";
+            return input;
         }
 
         public void WebSearchProcess()
         {
-            SearchSystem.BingSearch.startBingSearch(input, out aResults);
+            BingSearch.startBingSearch(StringBuilder(), aResults);
         }
 
         public string GetResults()
@@ -38,9 +52,9 @@ namespace SearchSystem
 
             if (aResults[0] != null)  //if the first cell of the array is null, there were no results from Bing!
             {
-                foreach (SearchSystem.Result r in aResults)
+                foreach (Result r in aResults)
                 {
-                    result += "<p><a href='" + r.mUrl + "' target='_blank'>" + r.mTitle + "</a><p>" + r.mDescription + "<br /><br />";
+                    result += "<p><a href='" + r.url + "' target='_blank'>" + r.title + "</a><p>" + r.description + "<br /><br />";
                 }
             }
             else

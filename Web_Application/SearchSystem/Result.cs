@@ -9,11 +9,11 @@ namespace SearchSystem
     public class Result
     {
     
-        Guid id;
-        int relevance;
+        public Guid id;
+        public int relevance;
         public String title;
-        public  String description;
-        String displayURL;
+        public String description;
+        public String displayURL;
         public String url;
 
         public Result()

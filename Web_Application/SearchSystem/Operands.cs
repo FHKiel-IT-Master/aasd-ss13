@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SearchSystem
 {
-    class Operands
+    public class Operands
     {
         String description;
         String content;

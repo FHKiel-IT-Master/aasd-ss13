@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace SearchSystem
 {
-    class Context
+    public class Context
     {
 
-        String description;
-        String name;
-        public  List<String> tags = new List<String>();
-        List<Operands> operands = new List<Operands>();
+        public String description;
+        public String name;
+        public List<String> tags = new List<String>();
+        public List<Operands> operands = new List<Operands>();
 
         public Context()
         {
-
 
 
         }

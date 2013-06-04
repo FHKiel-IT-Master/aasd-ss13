@@ -28,9 +28,9 @@ namespace Web_Application
         }
 
         //Receives a array of strings to dynamically insert HTML into the contexts div
-        protected void LoadContext(string[] ctx)
+        protected void LoadContext(List<string> ctx)
         {
-            for (int i = 0; i < ctx.Length; i++)
+            for (int i = 0; i < ctx.Count; i++)
             {
                 contexts.InnerHtml += "<input id='tl_" + ctx[i] + "' type='button' value='" + ctx[i] + "' class='btn_tile' onclick='context_clicked(this.value)'/>";
                 subcontexts.InnerHtml += "<input id='sub_" + ctx[i] + "' name='tl_" + ctx[i] + "_sub' type='button' value='SUB' class='btn_tile sub' onclick='subcontext_clicked(this.value)' style='display:none;'/>";

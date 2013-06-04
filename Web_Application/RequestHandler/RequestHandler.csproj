@@ -43,8 +43,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.sqlproj">
-      <Project>{aeaccfb4-912b-48ad-b5f4-069dc9e8a304}</Project>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{4b3c62e3-fe7c-4227-85d1-c95918b860ea}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\SearchSystem\SearchSystem.csproj">

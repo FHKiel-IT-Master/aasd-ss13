@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SearchSystem
 {
-    class Refiner
+    public class Refiner
     {
 
         List<Context> contexts = new List<Context>();
@@ -14,7 +14,6 @@ namespace SearchSystem
         public Refiner(List<Context> contexts)
         {
             this.contexts = contexts;
-
         }
 
         public List<Result> Refine(List<Result> results)

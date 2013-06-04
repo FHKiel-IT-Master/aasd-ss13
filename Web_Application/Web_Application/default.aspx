@@ -108,10 +108,10 @@
 
             if (this.getAttribute('class') == 'btn_tile') {
                 this.setAttribute('class', 'btn_tile_clicked');
-                var sub = document.getElementsByName(name);
-                for (var i = 0; i < sub.length; i++) {
-                    sub[i].setAttribute('style', 'display:inline');
-                }
+                //var sub = document.getElementsByName(name);
+                //for (var i = 0; i < sub.length; i++) {
+                //    sub[i].setAttribute('style', 'display:inline');
+                //}
             }
             else if (this.getAttribute('class') == 'btn_tile sub') {
                 this.setAttribute('class', 'btn_tile sub_clicked');
@@ -132,7 +132,7 @@
     function context_clicked(click_id) {
         var hidden = document.getElementById("<%:hidContexts.ClientID%>").value;
         if (hidden.search(click_id) == -1) {
-            document.getElementById("<%:hidContexts.ClientID%>").value += "%" + click_id;
+            document.getElementById("<%:hidContexts.ClientID%>").value += "%" + click_id + "%";
         } else {
             //if the context is deselected, all sub-contexts should also be removed
             var sub = document.getElementsByName("sub_" + click_id);
