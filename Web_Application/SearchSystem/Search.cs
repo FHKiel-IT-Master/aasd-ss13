@@ -38,7 +38,12 @@ namespace SearchSystem
         public string StringBuilder()
         {
             //Here the search string is properly built
-            return input;
+            string queryString = input;
+            foreach (var element in contexts) 
+            {
+                queryString += " + " + element.name; //string at the end will be: "input + context1 + context2 ..." 
+            }
+            return queryString;
         }
 
         public void WebSearchProcess()
