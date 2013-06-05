@@ -9,22 +9,22 @@ namespace SearchSystem
 {
     public class Search
     {
-        private string sContext;
+        private string Context;
         private string input;
-        public List<Result> aResults { get; protected set; }
+        public List<Result> Results { get; protected set; }
         public List<Context> contexts { get; private set;}
 
         public Search(string a, string b)
         {
             input = a;
-            sContext = b;
+            Context = b;
 
-            aResults = new List<SearchSystem.Result>();
+            Results = new List<SearchSystem.Result>();
             contexts = new List<Context>();
 
             //Contexts should also be created for further use in the string builder and refinement.
             Regex rg = new Regex("%(.*?)%");
-            Match tmp = rg.Match(sContext);
+            Match tmp = rg.Match(Context);
             while (tmp.Success)
             {
                 //Here connects to database to get the other necessary values to the context class
@@ -48,16 +48,16 @@ namespace SearchSystem
 
         public void WebSearchProcess()
         {
-            BingSearch.startBingSearch(StringBuilder(), aResults);
+            BingSearch.startBingSearch(StringBuilder(), Results);
         }
 
         public string GetResults()
         {
             string result="";
 
-            if (aResults[0] != null)  //if the first cell of the array is null, there were no results from Bing!
+            if (Results[0] != null)  //if the first cell of the array is null, there were no results from Bing!
             {
-                foreach (Result r in aResults)
+                foreach (Result r in Results)
                 {
                     result += "<p><a href='" + r.url + "' target='_blank'>" + r.title + "</a><p>" + r.description + "<br /><br />";
                 }

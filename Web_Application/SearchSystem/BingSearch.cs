@@ -9,7 +9,7 @@ namespace SearchSystem
 {
     public class BingSearch
     {
-        public static void startBingSearch(string aQueryString, List<SearchSystem.Result> aResults)
+        public static void startBingSearch(string aQueryString, List<SearchSystem.Result> Results)
         {
             var aBingContainer = new Bing.BingSearchContainer(new Uri(rootUri));    //create container which handles the connection to Bing
             aBingContainer.Credentials = new NetworkCredential(accountKey, accountKey);
@@ -22,7 +22,7 @@ namespace SearchSystem
 
             foreach (var aResult in aQueryResults)
             {
-                aResults.Add(new SearchSystem.Result()
+                Results.Add(new SearchSystem.Result()
                 {
                     id = aResult.ID,
                     title = aResult.Title,

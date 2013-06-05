@@ -13,7 +13,7 @@ namespace DataAccess
 
         public void openConnection()
         {
-            connection = new SqlConnection("Data Source=(localdb)\\Projects;Initial Catalog=DataAccess;Integrated Security=True;Encrypt=False;TrustServerCertificate=False");
+            connection = new SqlConnection("Data Source=(localdb)\\Projects;Initial Catalog=TempDB_1;Integrated Security=True;Encrypt=False;TrustServerCertificate=False");
             connection.Open();
         }
 
