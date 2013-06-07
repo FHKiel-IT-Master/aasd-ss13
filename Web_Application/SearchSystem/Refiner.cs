@@ -12,10 +12,12 @@ namespace SearchSystem
         //This class is used for refining the results after receiving them from Bing
 
         List<Context> contexts = new List<Context>();
+        String searchString;
 
-        public Refiner(List<Context> contexts)
+        public Refiner(List<Context> contexts, String searchString)
         {
             this.contexts = contexts;
+            this.searchString = searchString;
         }
 
         public void Refine(List<Result> results)
@@ -40,12 +42,26 @@ namespace SearchSystem
                             results[i].AddRelevance();
                         }
                     }
+                    
                 }
 
             }
 
             for (int i = 0; i < results.Count; i++)
             {
+                if (results[i].url.Contains(searchString))
+                {
+                    results[i].AddRelevance();
+                }
+                if (results[i].description.Contains(searchString))
+                {
+                    results[i].AddRelevance();
+                }
+                if (results[i].title.Contains(searchString))
+                {
+                    results[i].AddRelevance();
+                }
+
                 if (results[i].GetRelevance() == 0)
                 {
 

@@ -20,7 +20,7 @@ namespace RequestHandler
             srch.WebSearchProcess();
 
             //Thirdly refine the results
-            SearchSystem.Refiner refine = new SearchSystem.Refiner(srch.contexts);
+            SearchSystem.Refiner refine = new SearchSystem.Refiner(srch.contexts, input);
             refine.Refine(srch.Results);
         }
 
