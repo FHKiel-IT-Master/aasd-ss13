@@ -21,8 +21,6 @@ namespace SearchSystem
         public void Refine(List<Result> results)
         {
 
-
-
             for (int i = 0; i < results.Count; i++)
             {
                 for (int y = 0; y < contexts.Count; y++)
@@ -69,6 +67,7 @@ namespace SearchSystem
                 }
             }
 
+            results.Reverse();
 
         }
 

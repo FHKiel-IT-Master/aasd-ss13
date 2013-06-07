@@ -25,13 +25,23 @@ namespace SearchSystem
             //Contexts should also be created for further use in the string builder and refinement.
             Regex rg = new Regex("%(.*?)%");
             Match tmp = rg.Match(Context);
+            DataAccess.DBConnector.openConnection();
+
             while (tmp.Success)
             {
-                //Here connects to database to get the other necessary values to the context class
-                //If we are to use sub-contexts this part would need a re-coding.
-                contexts.Add(new Context() { name = tmp.Groups[1].ToString()});
+                SqlDataReader dbresult = DataAccess.DBConnector.executeQuery("SELECT VALUE FROM CONT_TAG WHERE ID = (SELECT ID FROM CONTEXT WHERE NAME = '"+tmp.Groups[1].ToString()+"')");
+                List<string> temptags = new List<string>();
+
+                while (dbresult.Read())
+                {
+                    temptags.Add(dbresult["Value"].ToString());
+                }
+
+                contexts.Add(new Context() { name = tmp.Groups[1].ToString(), tags = temptags });
                 tmp = tmp.NextMatch();
             }
+
+            DataAccess.DBConnector.closeConnection();
 
         }
 

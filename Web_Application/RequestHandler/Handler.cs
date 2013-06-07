@@ -19,25 +19,20 @@ namespace RequestHandler
             //Secondly start the search process
             srch.WebSearchProcess();
 
-            //Need to define some things before uncommenting these lines (Class Diagram)
             //Thirdly refine the results
-            //SearchSystem.Refiner refine = new SearchSystem.Refiner(srch.contexts);
-            //refine.Refine(srch.aResults);
+            SearchSystem.Refiner refine = new SearchSystem.Refiner(srch.contexts);
+            refine.Refine(srch.Results);
         }
 
         public string RequestResults()
-        {
+        { 
             return srch.GetResults();
         }
 
         public List<string> LoadStructure()
         {
-            //Here the connector to the database comes into play.
-            //It will output an array of strings containing the "structure"
-            //Here is just an example
-
-            DataAccess.DBConnector db = new DataAccess.DBConnector();
-            SqlDataReader results = db.executeQuery("SELECT Name FROM CONTEXT");
+            DataAccess.DBConnector.openConnection();
+            SqlDataReader results = DataAccess.DBConnector.executeQuery("SELECT Name FROM CONTEXT");
 
             List<string> ctxs = new List<string>();
 
@@ -45,6 +40,8 @@ namespace RequestHandler
             {
                 ctxs.Add(results["Name"].ToString());
             }
+
+            DataAccess.DBConnector.closeConnection();
 
             return ctxs;
         }

@@ -35,7 +35,7 @@
             <!-- MENU -->
             <div class="container_16">
                 <div class="grid_4">
-                    <div id="menu_block">
+                    <div id="menu_block" style="display:none">
                         <nav class="menu">
                             <ul id="menu">
                                 <li><a href="#!/page_home"></a></li>

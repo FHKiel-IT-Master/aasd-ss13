@@ -1,0 +1,25 @@
+﻿USE master;
+GO
+
+IF DB_ID ('WebAppDB') IS NOT NULL
+DROP DATABASE WebAppDB;
+GO
+
+CREATE DATABASE WebAppDB;
+GO
+
+USE WebAppDB;
+GO
+
+IF  EXISTS (SELECT * FROM SYS.DATABASE_PRINCIPALS WHERE NAME = 'webappuser')
+DROP USER [webappuser]
+GO
+
+CREATE LOGIN [webappuser] WITH PASSWORD = 'webappuser';
+GO
+
+CREATE USER [webappuser] FOR LOGIN [webappuser];
+GO
+
+GRANT CONNECT TO [webappuser];
+GO 

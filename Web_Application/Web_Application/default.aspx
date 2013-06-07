@@ -36,30 +36,6 @@
         height:100px;
         width:100px;
     }
-
-     .btn_tile.sub {
-        background-color: white;
-        opacity: 0.5;
-        border: 1px solid #fff;
-        margin-bottom:5px;
-        margin-left:5px;
-        height:50px;
-        width:50px;
-    }
-        .btn_tile.sub:hover {
-            background-color: #72c2a2;
-            opacity: 1;
-        }
-    .btn_tile.sub_clicked {
-        background-color: white;
-        opacity: 1;
-        border: 1px solid #fff;
-        margin-bottom:5px;
-        margin-left:5px;
-        height:50px;
-        width:50px;
-    }
-
 </style>
     <ul>
         <li id="page_home">
@@ -102,30 +78,10 @@
 
     for (var i = 0; i < btn_tile.length; i++) {
         btn_tile[i].addEventListener('click', function () {
-
-            var value = this.getAttribute('value');
-            var name = "sub_" + value;
-
-            if (this.getAttribute('class') == 'btn_tile') {
+            if (this.getAttribute('class') == 'btn_tile') 
                 this.setAttribute('class', 'btn_tile_clicked');
-                //var sub = document.getElementsByName(name);
-                //for (var i = 0; i < sub.length; i++) {
-                //    sub[i].setAttribute('style', 'display:inline');
-                //}
-            }
-            else if (this.getAttribute('class') == 'btn_tile sub') {
-                this.setAttribute('class', 'btn_tile sub_clicked');
-            }
-            else if (this.getAttribute('class') == 'btn_tile_clicked') {
+            else
                 this.setAttribute('class', 'btn_tile');
-                var sub = document.getElementsByName(name);
-                for (var i = 0; i < sub.length; i++) {
-                    sub[i].setAttribute('style', 'display:none');
-                }
-            }
-            else if (this.getAttribute('class') == 'btn_tile sub_clicked') {
-                this.setAttribute('class', 'btn_tile sub');
-            }
         });
     }
 
@@ -134,25 +90,7 @@
         if (hidden.search(click_id) == -1) {
             document.getElementById("<%:hidContexts.ClientID%>").value += "%" + click_id + "%";
         } else {
-            //if the context is deselected, all sub-contexts should also be removed
-            var sub = document.getElementsByName("sub_" + click_id);
-            for (var i = 0; i < sub.length; i++) {
-                hidden = hidden.replace("$" + sub[i].value, "");
-            }
-            hidden = hidden.replace("%" + click_id, "");
-            document.getElementById("<%:hidContexts.ClientID%>").value = hidden;
-        }
-    }
-
-    function subcontext_clicked(click_id,click_value) {
-        var hidden = document.getElementById("<%:hidContexts.ClientID%>").value;
-        if (hidden.search(click_value) == -1) {
-            //look for the name of the supercontext, so it can add the subcontext besides it
-            var position = hidden.search(click_id.substr(4));
-            hidden = [hidden.slice(0, (position + click_id.substr(4).length)), "$" + click_value, hidden.slice((position + click_id.substr(4).length))].join('');
-            document.getElementById("<%:hidContexts.ClientID%>").value = hidden;
-        } else {
-            hidden = hidden.replace("$" + click_value, "");
+            hidden = hidden.replace("%" + click_id + "%", "");
             document.getElementById("<%:hidContexts.ClientID%>").value = hidden;
         }
     }

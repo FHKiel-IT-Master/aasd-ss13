@@ -7,25 +7,23 @@ using System.Data.SqlClient;
 
 namespace DataAccess
 {
-    public class DBConnector
+    public static class DBConnector
     {
-        private SqlConnection connection;
+        private static SqlConnection connection;
 
-        public void openConnection()
+        public static void openConnection()
         {
-            connection = new SqlConnection("Data Source=(localdb)\\Projects;Initial Catalog=TempDB_1;Integrated Security=True;Encrypt=False;TrustServerCertificate=False");
+            connection = new SqlConnection("Data Source=(localdb)\\Projects;Initial Catalog=WebAppDB;Integrated Security=True;User ID=webappuser;Password=webappuser");
             connection.Open();
         }
 
-        public void closeConnection()
+        public static void closeConnection()
         {
             connection.Close();
         }
 
-        public SqlDataReader executeQuery(string command)
+        public static SqlDataReader executeQuery(string command)
         {
-            openConnection();
-
             SqlCommand sc = new SqlCommand(command, connection);
             SqlDataReader test = sc.ExecuteReader();
 

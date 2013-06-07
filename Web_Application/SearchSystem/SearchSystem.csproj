@@ -43,7 +43,6 @@
     <Compile Include="BingSearchContainer.cs" />
     <Compile Include="BingSearch.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="Operands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Refiner.cs" />
     <Compile Include="Result.cs" />
