@@ -69,7 +69,7 @@ namespace SearchSystem
             {
                 foreach (Result r in Results)
                 {
-                    result += "<p><a href='" + r.url + "' target='_blank'>" + r.title + "</a><p>" + r.description + "<br /><br />";
+                    result += "<p><a href='" + r.displayURL + "' target='_blank'>" + r.title + "</a><p>" + r.description + "<br /><br />";
                 }
             }
             else

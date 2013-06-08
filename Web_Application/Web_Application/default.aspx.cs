@@ -13,6 +13,8 @@ namespace Web_Application
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Page.Response.Cache.SetCacheability(HttpCacheability.NoCache);
+
             if (!IsPostBack)
             {
                 Session["Handler"] = new RequestHandler.Handler();
